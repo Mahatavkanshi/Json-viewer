@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON Viewer & Base64 Tool</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Config Builder</p>
+        <h1>Build, edit, and convert JSON in one place.</h1>
+        <p class="hero-copy">Fill the fields, edit the JSON directly, or paste Base64 to auto-populate everything. JSON and Base64 stay in sync.</p>
+      </div>
+      <div class="hero-card">
+        <span>Live sync</span>
+        <strong>Form <span>&harr;</span> JSON <span>&harr;</span> Base64</strong>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="panel panel-form">
+        <div class="panel-head">
+          <div>
+            <p class="section-label">Form Fields</p>
+            <h2>Editable configuration</h2>
+          </div>
+          <button id="resetDefaultsBtn" class="ghost-button" type="button">Reset defaults</button>
+        </div>
+        <div id="formContainer" class="form-sections"></div>
+      </section>
+
+      <section class="panel panel-editor">
+        <div class="panel-head">
+          <div>
+            <p class="section-label">JSON Editor</p>
+            <h2>Raw JSON + Base64 tools</h2>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <button id="viewJsonBtn" type="button">View JSON</button>
+          <button id="copyJsonBtn" type="button">Copy JSON</button>
+          <button id="encodeBtn" type="button">Convert to Base64</button>
+          <button id="copyBase64Btn" type="button">Copy Base64</button>
+        </div>
+
+        <label class="editor-block" for="jsonEditor">
+          <span>JSON Preview</span>
+          <textarea id="jsonEditor" spellcheck="false" readonly></textarea>
+        </label>
+
+        <label class="editor-block" for="base64Input">
+          <span>Add Base64</span>
+          <textarea id="base64Input" spellcheck="false" placeholder="Paste Base64 here. The JSON and form fields will auto-fill."></textarea>
+        </label>
+
+        <div class="toolbar toolbar-secondary">
+          <button id="decodeBtn" type="button">Add Base64</button>
+          <button id="clearBase64Btn" class="ghost-button" type="button">Clear Base64</button>
+        </div>
+
+        <div id="statusBar" class="status-bar">Ready.</div>
+      </section>
+    </main>
+  </div>
+
+  <template id="fieldTemplate">
+    <label class="field-row">
+      <span class="field-label"></span>
+      <input class="field-input" />
+    </label>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
